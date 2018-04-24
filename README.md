@@ -1,1 +1,3 @@
 # Hackaton
+
+Hackathon preparation program

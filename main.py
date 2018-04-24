@@ -1,3 +1,0 @@
-from cam import ShowFrame
-
-

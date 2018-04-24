@@ -1,3 +1,6 @@
+'''A program which takes live video frames
+and convert it to mask by the color Blue'''
+
 import cv2
 import numpy as np
 

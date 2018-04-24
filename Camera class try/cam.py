@@ -1,3 +1,7 @@
+'''
+A class for the camera.
+The methods of the class are the function called within cv2.
+'''
 import cv2
 import numpy as np
 

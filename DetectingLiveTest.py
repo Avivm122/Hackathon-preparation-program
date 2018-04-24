@@ -1,3 +1,7 @@
+'''
+A live detecting program.
+Still in test!
+'''
 import numpy as np
 import cv2
 

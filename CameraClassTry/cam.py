@@ -75,6 +75,7 @@ class cam():
 
     def release(self):
         self.cap.release()
+        cv2.destroyAllWindows()
 
 
 
@@ -86,5 +87,4 @@ if __name__ == '__main__':
         cam.ShowAll()
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    cam.cap.release()
-    cv2.destroyAllWindows()
+    cam.release()

@@ -1,13 +1,12 @@
-Tello drone commands:
+# Tello drone commands
 
-**Command**  ----  Description
-
+***Command**  ----  Description*
 
 **takeoff**  ----  Auto takeoff
 
 **land**  ----  Auto landing
 
-# Directions commands
+## Directions commands
 
 **up xx**  ----  Fly upward xx ; xx = (20-500 cm)
 

@@ -50,6 +50,9 @@ while True:
     try:
         msg = input("");
 
+        if msg == 'takeoff':
+            print("Taking off")
+
         if not msg:
             break  
 

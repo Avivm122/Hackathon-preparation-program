@@ -26,10 +26,10 @@ class cam():
 
     def LiveCapture(self):
         while True:
-            self.frame = cap.read()
+            ret, self.frame = self.cap.read()
 
     def Capture(self):
-        self.frame = cap.read()
+        ret, self.frame = self.cap.read()
 
     '''def ColorToHSV(self,b):
         color = np.unit8(b)
@@ -37,42 +37,37 @@ class cam():
         return hsv_color'''
 
     def HSVImage(self):
-        self.frame = Capture(self)
+        self.Capture()
         self.hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        return hsv
+
+    def getFrame(self):
+        return self.frame
 
     def HSVImage(self,frame):
         self.hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        return hsv
 
     def MaskImage(self):
-        self.hsv = HSVImage(self)
-        mask = cv2.inRange(hsv, self.lower_color, self.upper_color)
-        return mask
+        self.HSVImage()
+        self.mask = cv2.inRange(hsv, self.lower_color, self.upper_color)
     
     def MaskImage(self,hsv):
         self.mask = cv2.inRange(hsv, self.lower_color, self.upper_color)
-        return mask
 
     def ResImage(self):
-        self.mask = MaskImage(self)
-        res = cv2.bitwise_and(frame,frame, mask=mask)
-        return res
+        self.MaskImage()
+        self.res = cv2.bitwise_and(frame,frame, mask=mask)
 
     def ResImage(self,frame):
-        self.hsv = HSVImage(self,frame)
-        self.mask = MaskImage(self,hsv)
-        res = cv2.bitwise_and(frame,frame, mask=mask)
-        return res
-
+        self.HSVImage(frame)
+        self.MaskImage(hsv)
+        self.res = cv2.bitwise_and(frame,frame, mask=mask)
     
-    @property
     def ShowFrame(self):
-        Capture(self)
+        self.Capture()
         cv2.imshow('frame',self.frame)
 
-    def ShowFrame(self,frame):
-        cv2.imshow('frame',frame)
+    '''def ShowFrame(self,frame):
+        cv2.imshow('frame',frame)'''
 
     def ShowHSV(self):
         frame = Capture(self)
@@ -132,3 +127,11 @@ class cam():
         ShowHSV(self,frame)
         ShowMask(self,frame)
         ShowRes(self,frame)
+
+
+
+if __name__ == '__main__':
+    lower_blue = np.array([110,50,50])
+    upper_blue = np.array([130,255,255])
+    cam = cam(lower_blue,upper_blue)
+    cam.ShowFrame()

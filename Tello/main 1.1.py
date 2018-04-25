@@ -52,7 +52,7 @@ def send(msg):
         sent = sock.sendto(msg, tello_address)
     except KeyboardInterrupt:
         print ('\n . . .\n')
-
+        sock.close()
 
 msg = input("");
 send(msg)

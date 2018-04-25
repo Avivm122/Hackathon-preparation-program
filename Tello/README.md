@@ -2,11 +2,13 @@
 
 ***Command**  ----  Description*
 
-## Start commands
+## Basic commands
 
 **takeoff**  ----  Auto takeoff
 
 **land**  ----  Auto landing
+
+**end**  ---- Quit program
 
 ## Directions commands
 

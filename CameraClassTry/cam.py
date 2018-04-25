@@ -47,7 +47,7 @@ class cam():
     def ShowHSV(self):
         self.Capture()
         self.HSVImage()
-        cv2.imshow('frame',self.hsv)
+        cv2.imshow('HSV',self.hsv)      
 
     def ShowMask(self):
         self.Capture()
@@ -62,16 +62,39 @@ class cam():
         self.ResImage()
         cv2.imshow('Res',self.res)
 
-    def ShowAll(self):
-        self.ShowFrame()
-        self.ShowHSV()
-        self.ShowMask()
-        self.ShowRes()
-
     def Show_HSV_Mask_Res(self):
-        self.ShowHSV()
-        self.ShowMask()
-        self.ShowRes()
+        self.Capture()
+        self.ShowHSVAll()
+        self.ShowMaskAll()
+        self.ShowResAll()
+
+    #Show all special methods begin
+    '''For a faster process ive created an ShowSomethingAll
+       The diffrence is not taking another frame each time.
+       Shorter process time and same frame process.'''
+    def ShowFrameAll(self):
+        self.Capture()
+        cv2.imshow('frame',self.frame)
+
+    def ShowHSVAll(self):
+        self.HSVImage()
+        cv2.imshow('HSV',self.hsv)
+
+    def ShowMaskAll(self):
+        self.MaskImage()
+        cv2.imshow('Mask',self.mask)
+
+    def ShowResAll(self):
+        self.ResImage()
+        cv2.imshow('Res',self.res)
+
+    #Show all special methods end
+
+    def ShowAll(self):
+        self.ShowFrameAll()
+        self.ShowHSVAll()
+        self.ShowMaskAll()
+        self.ShowResAll()
 
     def release(self):
         self.cap.release()
